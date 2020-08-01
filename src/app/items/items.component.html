@@ -1,0 +1,72 @@
+
+<div class="col-md-6 user-container" style="text-align: center;" >
+    <h2 class="text-center">Add Item</h2>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="itemname">Item Name:</label>
+        <input type="text" formControlName="itemname" name="itemname" class="form-control" id="itemname">
+        <div *ngIf="(submitted || addForm.controls['itemname'].touched) && (addForm.controls['itemname'].errors?.required || addForm.controls['itemname'].value.trim() == '')" class="alertmsg">
+           Please enter Item name
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <input type="text" formControlName="description" name="description" class="form-control" id="description">
+      </div>
+  
+            
+      <div class="form-group">
+        <label for="price">Item Price:</label>
+        <input type="number" formControlName="price"  name="price" class="form-control" id="price">
+        <div *ngIf="(submitted || addForm.controls['price'].touched) && (addForm.controls['price'].errors?.required || addForm.controls['price'].value == '')" class="alertmsg">
+            Please enter Item price
+         </div>
+      </div>
+
+      <div class="row" style="margin-bottom:15px;">
+        <div class="col-md-3">
+          <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+          <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
+        </div>
+        <!-- <div class="col-md-4">
+          <span class="upload" *ngIf="progress > 0">
+            {{progress}}%
+          </span>
+          <span class="upload" *ngIf="message">
+            {{message}}
+          </span>
+        </div> -->
+      </div>
+      <button type="submit" class="btn save-btn">save</button>
+    
+    </form>
+  </div>
+
+  <div class="col-md-6 user-container"  style="text-align: center;">
+    <h2 style="margin: auto"> Items Details</h2>
+    <!-- <button class="btn btn-danger" style="width:100px" (click)="addUser()"> Add User</button> -->
+    <table class="table table-striped" style="text-align: center;">
+      <thead>
+      <tr>
+        <th class="hidden" style="display: none;">Id</th>
+        <th>Item Name</th>
+        <th>Description</th>
+              <th>Price</th>
+              <th>Image</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of items">
+        <td class="hidden"  style="display: none;" >{{item.id}}</td>
+        <td >{{item.itemName}}</td>
+        <td>{{item.description=="" ? '--' : item.description}}</td>
+        <td>{{item.price}}</td>
+        <td><img [src]="createImgPath(item.filePath)" alt="profile picture" style="width:60px; height:60px;"></td>
+       
+        <td><button class="btn btn-success" (click)="deleteItem(item.id)"> Delete</button>
+         </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
