@@ -8,11 +8,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 //import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { ItemDetailsComponent } from './item-details/item-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ItemsComponent
+    ItemsComponent,
+    ItemDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +26,6 @@ import { HttpClientModule } from '@angular/common/http';
     //ToastrModule.forRoot()
   ],
   providers: [],
-  bootstrap: [ItemsComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

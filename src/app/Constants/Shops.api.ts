@@ -8,6 +8,7 @@ export const ShopsAPI = {
     GetItems: apiURL + 'Product/GetItems',
     RemoveItems: apiURL + 'Product/RemoveItem',
     UploadFile: apiURL + 'Product/UploadFile',
-    CreateImage: apiURL + 'Product/GetImage'
+    CreateImage: apiURL + 'Product/GetImage',
+    GetItem: apiURL + 'Product/GetItem',
     // RemoveTearsheetDetailsFromFolder: apiURL + 'tearsheet/RemoveTearsheetDetails'
 }
