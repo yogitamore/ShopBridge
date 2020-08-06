@@ -13,7 +13,6 @@ export class ItemDetailsComponent implements OnInit {
   items: any;
   constructor( private router: Router,private route: ActivatedRoute, private apiService : APIService
     ) {
-      debugger;
       this.route.params.subscribe(params => {
         this.Id = params.id;
       });
@@ -21,13 +20,12 @@ export class ItemDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.apiService.getItem(this.Id).subscribe((result: any) => {
-      debugger;
       if (result != null) {
+        debugger;
         this.items = result;
       }
     });
 
-    debugger;
   }
 
 }

@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { APIService } from '../api.service';
 import { ItemDetails } from '../Constants/ItemDetails';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-items',
@@ -12,7 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ItemsComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private apiService: APIService, private sanitizer: DomSanitizer) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private apiService: APIService){ }
   submitted: boolean;
   addForm: FormGroup;
   items: any;
@@ -45,8 +44,7 @@ export class ItemsComponent implements OnInit {
   }
   // upload file and save on serverside path
   uploadFile(event) {
-    debugger;
-    if (event.target.files.length > 0) {
+      if (event.target.files.length > 0) {
       const fileReader = new FileReader();
       const file = event.target.files[0];
 
@@ -94,7 +92,6 @@ export class ItemsComponent implements OnInit {
     }
 
   }
-
   // Remove the items
   deleteItem(Id: number) {
     this.apiService.removeItems(Id).subscribe((Data: any) => {

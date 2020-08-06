@@ -13,12 +13,11 @@ export class AppComponent {
 
 addInventory(){
   this.router.navigate(['/items']);
-    
+
 
 }
 
-onBackClick()
-{
+onBackClick() {
   this.location.back();
 }
 

@@ -65,7 +65,7 @@
         <td>{{item.description=="" ? '--' : item.description}}</td>
         <td>{{item.price}}</td>
         <td ><img src="https://localhost:44379/api/Product/GetImage?FilePath={{item.filePath}}" id="img_item"
-            alt="picture" style="width:60px; height:50px;"></td>
+            alt="image" ></td>
 
         <td><button class="btn btn-danger" (click)="deleteItem(item.id)"> Delete</button>
         </td>

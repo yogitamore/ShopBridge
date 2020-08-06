@@ -1,8 +1,8 @@
 export class ItemDetails {
 
-ItemName : string;
+ItemName: string;
 Description: string;
 Price: number ;
-FilePath:string;
+FilePath: string;
 
 }

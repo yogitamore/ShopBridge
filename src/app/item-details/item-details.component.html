@@ -1,13 +1,21 @@
-<div  style="text-align: center;">
-<p> <b>Item-details !!!</b></p>
-<div class="form-group">
+    <div *ngIf="items"  style="text-align: center;">
+<h4>Item-Details !!!</h4>
+<div class="form-group"></div>
+<div  class="form-group">
 <b>Item Name :-</b> <span class="item-note">  {{items.itemName}} </span> </div>
 <div class="form-group">
 <b>Description :-</b> <span class="item-note">  {{items.description}} </span>
 </div>
 <div class="form-group">
 <b>Price :-</b> <span class="item-note">  {{items.price}} </span>
+
 </div>
+<div class="form-group">
+    <b>Image :-</b> 
+    <img src="https://localhost:44379/api/Product/GetImage?FilePath={{items.filePath}}" id="img_item"
+    alt="image" ></div>
+
+
 </div>
 
 
