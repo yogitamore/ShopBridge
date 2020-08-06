@@ -38,7 +38,7 @@
     <div class="form-row" style="margin-bottom:15px;">
       <label for="image" class="col-4">Item Image:</label>
       <div class="col-md-3">
-        <input type="file" formControlName="file" #file placeholder="Choose file" (change)="uploadFile(file.files)">
+        <input type="file"  formControlName="fileid" #file placeholder="Choose file" (change)="uploadFile($event)">
       </div>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
@@ -64,8 +64,8 @@
         <td><a (click)="navigateToDetails( item.id)"> {{item.itemName}}</a> </td>
         <td>{{item.description=="" ? '--' : item.description}}</td>
         <td>{{item.price}}</td>
-        <td><img src="https://localhost:44379/api/Product/GetImage?FilePath={{item.filePath}}" id="img_item"
-            alt="picture" style="width:60px; height:60px;"></td>
+        <td ><img src="https://localhost:44379/api/Product/GetImage?FilePath={{item.filePath}}" id="img_item"
+            alt="picture" style="width:60px; height:50px;"></td>
 
         <td><button class="btn btn-danger" (click)="deleteItem(item.id)"> Delete</button>
         </td>

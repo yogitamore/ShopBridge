@@ -24,6 +24,7 @@ export class ItemsComponent implements OnInit {
       price: ['', Validators.required],
       file: [''],
       filePath: [''],
+      fileid: ['']
 
     });
 
@@ -42,24 +43,24 @@ export class ItemsComponent implements OnInit {
 
 
   }
-// upload file and save on serverside path
-  public uploadFile = (files) => {
-    if (files.length === 0) {
-      return;
+  // upload file and save on serverside path
+  uploadFile(event) {
+    debugger;
+    if (event.target.files.length > 0) {
+      const fileReader = new FileReader();
+      const file = event.target.files[0];
+
+      this.addForm.get('file').setValue(file);
+      const formData = new FormData();
+      formData.append('file', this.addForm.get('file').value);
+      this.apiService.uploadFile(formData).subscribe(data => {
+
+        if (data != null) {
+          this.addForm.get('filePath').setValue(data);
+        }
+      });
+
     }
-
-    const fileToUpload = files[0] as File;
-
-    this.addForm.get('file').setValue(fileToUpload);
-    const formData = new FormData();
-    formData.append('file', this.addForm.get('file').value);
-    this.apiService.uploadFile(formData).subscribe(data => {
-
-      if (data != null) {
-        this.addForm.get('filePath').setValue(data);
-      }
-    });
-
   }
   // public createImgPath = (serverPath: string) => {
   //   debugger;
@@ -81,8 +82,9 @@ export class ItemsComponent implements OnInit {
 
       this.apiService.addItems(this.addForm.value).subscribe((Data: any) => {
         if (Data !== -1) {
-           // this.notifyService.success("Items saved successfully!!");
+          // this.notifyService.success("Items saved successfully!!");
           this.addForm.reset();
+        //  document.getElementById('fileid').se = ""
           alert('Items added successfully !!');
           this.getData();
         }
